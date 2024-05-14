@@ -17,4 +17,11 @@ public class Controller {
         producer.sendMessage("Jun 님이 message 보냅니다");
         return "api 통신 성공";
     }
+
+    @PostMapping("kafka/object")
+    public String testObjectApi(@RequestBody KafkaDto kafkaDto) {
+        log.info("API 객체 수신 했습니다.");
+        producer.sendObject(kafkaDto);
+        return "api 객체 수신 성공";
+    }
 }
